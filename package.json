@@ -5,6 +5,7 @@
   "description": "时观 · 全国时政实时雷达：聚合、检索、每日简报与站内问答",
   "type": "module",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "build:single": "node build-single.mjs"
   }
 }

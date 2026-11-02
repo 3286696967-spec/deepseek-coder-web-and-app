@@ -16,6 +16,18 @@ node server.mjs
 
 打开 <http://127.0.0.1:4173>。
 
+### 单文件 HTML 版
+
+如果只需要一个包含全部页面结构、样式和前端脚本的 HTML 文件：
+
+```bash
+npm run build:single
+```
+
+会生成 `public/site.html`（约 140 KB，CSS/JS 全部内联），访问 <http://127.0.0.1:4173/site.html>。
+
+该文件仍然通过 `/api/dashboard` 与 `/api/ask` 读取服务端的实时数据；直接双击以 `file://` 打开时没有后端接口，只会显示连接提示。需要完全离线演示时，可在浏览器中打开运行中的服务地址后另存网页。
+
 可选环境变量：
 
 | 变量 | 作用 | 默认 |
@@ -67,7 +79,9 @@ server.mjs          零依赖 Node 服务、抓取/解析/缓存/简报/本地 R
 public/index.html   页面结构
 public/styles.css   报馆编辑风样式与响应式布局
 public/app.js       数据渲染、筛选、搜索、简报、AI 抽屉
+public/site.html    单文件构建产物（内联 CSS/JS）
 public/assets/       favicon
+build-single.mjs    单文件构建脚本
 ```
 
 > 本项目是信息聚合与检索工具，不构成政策解读、投资建议或对任何事件的定性。涉及政策表述、数据与人事信息，请回到原始发布核验。
