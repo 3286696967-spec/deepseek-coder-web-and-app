@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1d2a24">
+  <meta name="description" content="时观：全国时政实时雷达。聚合国务院、地方官网、官方媒体、求是杂志与平台视频，每日生成客观分析简报，并支持带引文的 AI 问答。">
+  <title>时观 · 全国时政实时雷达</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.8 13.9 9l6.2 1.9-6.2 1.9L12 19l-1.9-6.2L3.9 10.9 10.1 9 12 2.8Z"></path><path d="M19 16.4 19.8 19l2.6.8-2.6.8L19 23l-.8-2.4-2.6-.8 2.6-.8.8-2.6Z"></path></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 6.7"></path><path d="M20 4v7h-7"></path></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"></path></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3.2 2"></path></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"></path></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-5 16-3.6-7.2L4 12Z"></path><path d="m11.4 12.8 4-4"></path></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="12" rx="1.5"></rect><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v10A1.5 1.5 0 0 0 5.5 17H8"></path></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 20h14"></path></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
+    <symbol id="i-weibo" viewBox="0 0 24 24"><path d="M4 18.5c1.2 1.3 4.3 1.7 7.5.4 3.6-1.5 6.2-4.7 5.3-7.2-.6-1.7-2.7-2.1-4.4-1.2"></path><path d="M11 17.8c2.2-.7 3.8-2.5 3.5-4.2-.2-1.2-1.6-1.7-3-1.4"></path><path d="M15.5 5.3c2.4-.5 4.7.8 5.2 3.1.3 1.3 0 2.5-.8 3.4"></path><path d="M16.4 8.5c1.1-.2 2.1.3 2.4 1.3.2.6 0 1.2-.3 1.7"></path><circle cx="8.1" cy="15.2" r="1.2"></circle></symbol>
+    <symbol id="i-wechat" viewBox="0 0 24 24"><path d="M14.8 13.8c2.8 0 5.2-1.9 5.2-4.3s-2.4-4.3-5.2-4.3-5.2 1.9-5.2 4.3c0 1 .4 1.9 1.1 2.6l-.6 2 2.2-1.2c.7.6 1.6.9 2.5.9Z"></path><path d="M11.7 12.5c-2.9-.4-4.9-2.2-4.9-4.3 0-2.5 2.7-4.5 6-4.5"></path><path d="M9.2 14.4c0 2.4 2.3 4.3 5 4.3.8 0 1.6-.2 2.3-.6l2.1 1.1-.6-1.9c.7-.7 1.1-1.7 1.1-2.8"></path></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.2 4.2L19 6.5"></path></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 5 14h6l-1 8 9-13h-6l0-7Z"></path></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4.5h10.5A3.5 3.5 0 0 1 19 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"></path><path d="M5 16.5A3.5 3.5 0 0 1 8.5 13H19"></path></symbol>
+  </svg>
+
+  <header class="masthead" id="top">
+    <div class="masthead__bar">
+      <a class="brand" href="#top" aria-label="时观首页">
+        <span class="brand__mark">时</span>
+        <span class="brand__type">
+          <strong>时观</strong>
+          <small>SHIGUAN / POLITICS DESK</small>
+        </span>
+      </a>
+      <div class="masthead__meta">
+        <span class="live-badge"><i></i>LIVE</span>
+        <span id="headerDate">2026年11月2日 · 星期一</span>
+        <span class="masthead__clock" id="headerClock">11:07:02</span>
+      </div>
+      <div class="masthead__actions">
+        <button class="icon-btn" id="refreshBtn" type="button" aria-label="刷新数据" title="刷新数据">
+          <svg class="i"><use href="#i-refresh"></use></svg>
+        </button>
+        <button class="icon-btn quick-brief" type="button" data-open-brief aria-label="打开今日简报" title="今日简报">
+          <svg class="i"><use href="#i-book"></use></svg>
+        </button>
+        <button class="ai-button" type="button" data-open-ai>
+          <svg class="i"><use href="#i-spark"></use></svg>
+          <span>AI 问答</span><kbd>⌘ K</kbd>
+        </button>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="打开目录" aria-expanded="false">
+          <svg class="i"><use href="#i-menu"></use></svg>
+        </button>
+      </div>
+    </div>
+    <div class="masthead__nav">
+      <nav class="mainnav" id="mainnav" aria-label="主导航">
+        <a href="#overview" class="is-active">总览</a>
+        <a href="#stream">实时要闻</a>
+        <a href="#local">地方政务</a>
+        <a href="#qiushi">求是</a>
+        <a href="#media">媒体</a>
+        <a href="#watch">观察</a>
+        <a href="#video">视频</a>
+        <a href="#sources">入口</a>
+      </nav>
+      <form class="search" id="searchForm" role="search">
+        <svg class="i search__icon"><use href="#i-search"></use></svg>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="搜索今日政情、政策、地方动态…" aria-label="搜索站内信源">
+        <button class="search__clear" id="searchClear" type="button" aria-label="清空搜索" hidden>
+          <svg class="i"><use href="#i-close"></use></svg>
+        </button>
+        <span class="search__hint">Enter 检索</span>
+      </form>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#overview">总览</a><a href="#stream">实时要闻</a><a href="#local">地方政务</a><a href="#qiushi">求是</a><a href="#media">媒体</a><a href="#watch">观察</a><a href="#video">视频</a><a href="#sources">入口</a>
+    </div>
+  </header>
+
+  <div class="ticker" aria-label="实时快讯">
+    <div class="ticker__label"><span class="pulse"></span>快讯</div>
+    <div class="ticker__viewport"><div class="ticker__track" id="tickerTrack"></div></div>
+    <a class="ticker__all" href="#stream">全部 <span>→</span></a>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar__sticky">
+        <p class="eyebrow">DESK INDEX</p>
+        <nav class="side-nav" aria-label="页面目录">
+          <a href="#overview" class="is-active"><span>00</span>总览</a>
+          <a href="#stream"><span>01</span>实时要闻流</a>
+          <a href="#local"><span>02</span>地方政务</a>
+          <a href="#qiushi"><span>03</span>求是理论</a>
+          <a href="#media"><span>04</span>信源矩阵</a>
+          <a href="#watch"><span>05</span>时政观察</a>
+          <a href="#video"><span>06</span>视频现场</a>
+          <a href="#sources"><span>07</span>官方入口</a>
+        </nav>
+        <div class="side-brief">
+          <div class="side-brief__head"><span class="pulse"></span>今日简报</div>
+          <strong id="sideBriefIssue">2026.11.02</strong>
+          <p id="sideBriefMeta">14 个信源 · 160 条</p>
+          <button type="button" class="text-link" data-open-brief>阅读全文 <span>→</span></button>
+        </div>
+        <div class="side-foot">
+          <span>数据更新</span>
+          <strong id="sideUpdate">--:--</strong>
+          <small>自动抓取 · 5 分钟缓存</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="section hero-section reveal" id="overview">
+        <div class="hero">
+          <div class="hero__art" aria-hidden="true"><span class="hero__ring"></span><span class="hero__glyph">政</span></div>
+          <div class="hero__main">
+            <div class="hero__kicker">
+              <span class="tag tag--red">今日头条</span>
+              <span id="heroSource">中国政府网</span>
+              <span class="dot-sep"></span>
+              <time id="heroDate">11-02</time>
+            </div>
+            <h1 id="heroTitle" class="hero__title">正在接入今日信源……</h1>
+            <p class="hero__excerpt" id="heroExcerpt">聚合国务院、地方官网、官方媒体与理论刊物，正在生成今日政情摘要。</p>
+            <div class="hero__actions">
+              <a class="primary-link" id="heroLink" href="https://www.gov.cn/" target="_blank" rel="noopener noreferrer">阅读原文 <svg class="i"><use href="#i-arrow"></use></svg></a>
+              <button class="ghost-button" type="button" data-ask-hero><svg class="i"><use href="#i-spark"></use></svg>就这条问 AI</button>
+            </div>
+            <div class="hero__stats" id="heroStats"></div>
+          </div>
+          <aside class="hero__side">
+            <div class="hero__side-head"><span>即时</span><time id="heroUpdate">--:-- 更新</time></div>
+            <ol class="hero-list" id="heroList"></ol>
+            <a class="hero__more" href="#stream">进入实时流 <span>→</span></a>
+          </aside>
+        </div>
+        <div class="front-lines" id="frontLines"></div>
+      </section>
+
+      <section class="section reveal" id="stream">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">LIVE WIRE / 01</p>
+            <h2>实时要闻流</h2>
+          </div>
+          <div class="section-head__tools">
+            <div class="filter-chips" id="filterChips" role="tablist" aria-label="要闻筛选">
+              <button type="button" class="is-active" data-filter="all">全部</button>
+              <button type="button" data-filter="central">中央</button>
+              <button type="button" data-filter="policy">政策</button>
+              <button type="button" data-filter="local">地方</button>
+              <button type="button" data-filter="media">媒体</button>
+              <button type="button" data-filter="theory">求是</button>
+            </div>
+            <button class="sort-button" id="sortBtn" type="button" aria-label="切换排序">最新 <svg class="i"><use href="#i-chevron"></use></svg></button>
+          </div>
+        </div>
+        <div class="stream-layout">
+          <div>
+            <div class="stream-list" id="streamList">
+              <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+            </div>
+            <button class="load-more" id="loadMore" type="button" hidden>展开更多要闻 <span>+</span></button>
+          </div>
+          <aside class="stream-aside">
+            <div class="panel keyword-panel">
+              <div class="panel__head"><span>今日高频词</span><span class="mono">TOPICS</span></div>
+              <div class="keyword-cloud" id="keywordCloud"></div>
+            </div>
+            <div class="panel coverage-panel">
+              <div class="panel__head"><span>信源覆盖</span><span class="mono">COVERAGE</span></div>
+              <div id="coverageCard"></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" id="local">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">LOCAL DESK / 02</p>
+            <h2>地方政务</h2>
+          </div>
+          <a class="section-link" href="#sources">省级官网总目录 <span>→</span></a>
+        </div>
+        <div class="local-layout">
+          <div class="local-news">
+            <div class="local-news__head"><span class="tag tag--ink">地方动态</span><span id="localMeta">正在汇总</span></div>
+            <div id="localList"></div>
+          </div>
+          <div class="province-panel">
+            <div class="panel__head"><span>地方政府直通车</span><span class="mono">31 + 2</span></div>
+            <div class="province-grid" id="provinceGrid"></div>
+            <button class="text-link province-toggle" id="provinceToggle" type="button">展开全部省份 <span>+</span></button>
+            <p class="fineprint">链接直达各地政府门户；标红地区为今日站内已抓取到动态的来源。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--ink reveal" id="qiushi">
+        <div class="section-head section-head--light">
+          <div>
+            <p class="eyebrow">THEORY / 03</p>
+            <h2>求是 · 理论前沿</h2>
+          </div>
+          <a class="section-link section-link--light" href="https://www.qstheory.cn/qs/" target="_blank" rel="noopener noreferrer">求是杂志 <span>↗</span></a>
+        </div>
+        <div class="qiushi-layout">
+          <article class="qiushi-lead" id="qiushiLead"></article>
+          <div class="qiushi-list" id="qiushiList"></div>
+        </div>
+        <div class="theory-strip" id="theoryLinks"></div>
+      </section>
+
+      <section class="section reveal" id="media">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">SOURCE MATRIX / 04</p>
+            <h2>信源矩阵</h2>
+          </div>
+          <div class="matrix-tabs" id="matrixTabs" role="tablist" aria-label="信源筛选">
+            <button type="button" class="is-active" data-matrix="all">全部</button>
+            <button type="button" data-matrix="central">中央</button>
+            <button type="button" data-matrix="local">地方</button>
+            <button type="button" data-matrix="media">媒体</button>
+            <button type="button" data-matrix="theory">理论</button>
+          </div>
+        </div>
+        <div class="source-grid" id="sourceMatrix"></div>
+        <div class="source-extra" id="sourceExtra"></div>
+      </section>
+
+      <section class="section reveal" id="watch">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">WATCH / 05</p>
+            <h2>时政观察</h2>
+          </div>
+          <span class="section-note">博主与社交平台 · 仅提供检索入口</span>
+        </div>
+        <div class="watch-layout">
+          <div class="blogger-panel">
+            <div class="panel__head"><span>头部时政博主</span><span class="mono">8 SOURCES</span></div>
+            <div class="blogger-grid" id="bloggerGrid"></div>
+            <p class="fineprint">微博与微信内容需在对应平台登录访问。本站不镜像、不伪造帖子，只提供可核验的检索入口。</p>
+          </div>
+          <div class="trend-panel">
+            <div class="panel__head"><span>微博实时热搜</span><span class="mono" id="trendUpdate">LIVE</span></div>
+            <ol class="trend-list" id="trendList"></ol>
+            <div class="trend-fallback" id="trendFallback"></div>
+            <a class="text-link" href="https://s.weibo.com/top/summary" target="_blank" rel="noopener noreferrer">查看完整热搜榜 <span>↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--paper reveal" id="video">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">SCREEN / 06</p>
+            <h2>视频现场</h2>
+          </div>
+          <div class="video-tabs" id="videoTabs" role="tablist" aria-label="视频平台">
+            <button type="button" class="is-active" data-video="bilibili">B 站</button>
+            <button type="button" data-video="xhs">小红书</button>
+          </div>
+        </div>
+        <div class="video-layout">
+          <div class="video-live" id="videoLive"></div>
+          <div class="video-topics" id="videoTopics"></div>
+        </div>
+        <div class="account-strip" id="videoAccounts"></div>
+        <p class="fineprint video-note" id="videoNote">平台视频由公开检索结果提供，不代表本站立场；涉及政策表述请以原文和权威发布为准。</p>
+      </section>
+
+      <section class="section reveal" id="sources">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">DIRECTORY / 07</p>
+            <h2>官方入口总目录</h2>
+          </div>
+          <span class="section-note">国务院部委 · 省级政府 · 官媒 · 理论机构</span>
+        </div>
+        <div class="directory-grid">
+          <div class="directory-block">
+            <div class="panel__head"><span>国务院部委</span><span class="mono">25</span></div>
+            <div class="directory-list directory-list--two" id="ministryGrid"></div>
+          </div>
+          <div class="directory-block">
+            <div class="panel__head"><span>省级政府</span><span class="mono">31 + 2</span></div>
+            <div class="directory-list directory-list--two" id="provinceDirectory"></div>
+          </div>
+          <div class="directory-block">
+            <div class="panel__head"><span>官方媒体</span><span class="mono">14</span></div>
+            <div class="directory-list" id="mediaDirectory"></div>
+          </div>
+          <div class="directory-block">
+            <div class="panel__head"><span>理论与智库</span><span class="mono">7</span></div>
+            <div class="directory-list" id="theoryDirectory"></div>
+          </div>
+        </div>
+        <details class="health-details">
+          <summary><span>信源运行状态</span><span class="mono" id="healthSummary">14 / 14</span><svg class="i"><use href="#i-chevron"></use></svg></summary>
+          <div class="health-table" id="healthTable"></div>
+        </details>
+      </section>
+    </main>
+
+    <aside class="rail">
+      <section class="brief-card reveal" id="brief">
+        <div class="brief-card__head">
+          <span class="brief-label"><i class="pulse"></i>每日分析简报</span>
+          <span class="mono" id="briefIssue">2026.11.02</span>
+        </div>
+        <h2 id="briefTitle">今日政情分析简报</h2>
+        <p class="brief-card__summary" id="briefSummary">正在根据今日信源生成摘要……</p>
+        <div class="brief-metrics" id="briefMetrics"></div>
+        <div class="brief-signals" id="briefSignals"></div>
+        <div class="brief-card__actions">
+          <button class="dark-button" type="button" data-open-brief>阅读全文 <span>→</span></button>
+          <button class="icon-btn icon-btn--small" id="exportBrief" type="button" aria-label="导出 Markdown" title="导出 Markdown">
+            <svg class="i"><use href="#i-download"></use></svg>
+          </button>
+        </div>
+        <p class="fineprint">依据站内信源自动生成，重要表述请核原文。</p>
+      </section>
+
+      <section class="ask-card reveal">
+        <div class="ask-card__top">
+          <span class="ai-orb ai-orb--small"><svg class="i"><use href="#i-spark"></use></svg></span>
+          <span class="mono">RETRIEVAL + AI</span>
+        </div>
+        <h3>向今日信源库提问</h3>
+        <p>基于站内标题与摘要检索，回答附原文引文；不编造未收录的信息。</p>
+        <div class="ask-suggestions" id="askSuggestions"></div>
+        <button class="ai-wide-button" type="button" data-open-ai>开始提问 <svg class="i"><use href="#i-arrow"></use></svg></button>
+      </section>
+
+      <section class="health-card reveal">
+        <div class="panel__head"><span>数据健康</span><span class="mono">STATUS</span></div>
+        <div class="health-ring-row">
+          <div class="health-ring" id="healthRing"><span id="healthRingText">--</span></div>
+          <div class="health-ring-copy">
+            <strong id="healthOk">正在连接</strong>
+            <p id="healthUpdated">等待首次刷新</p>
+            <span id="healthLatency" class="mono">-- ms</span>
+          </div>
+        </div>
+        <div class="health-bars" id="healthBars"></div>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__brand">
+      <span class="brand__mark brand__mark--small">时</span>
+      <div><strong>时观</strong><small>全国时政实时雷达</small></div>
+    </div>
+    <p>聚合公开信源，标题与摘要版权归原发布者所有。本站不镜像原文，不替代权威发布；AI 回答仅作检索辅助。</p>
+    <div class="footer__meta"><span id="footerUpdated">数据加载中</span><span>·</span><span>127.0.0.1:4173</span><span>·</span><span>LOCAL FIRST</span></div>
+  </footer>
+
+  <div class="drawer-layer" id="aiLayer" hidden>
+    <div class="drawer-backdrop" data-close-ai></div>
+    <section class="ai-drawer" role="dialog" aria-modal="true" aria-labelledby="aiTitle" tabindex="-1">
+      <header class="ai-drawer__head">
+        <span class="ai-orb"><svg class="i"><use href="#i-spark"></use></svg></span>
+        <div><p class="eyebrow">ASK THE DESK</p><h2 id="aiTitle">时政问答</h2></div>
+        <button class="icon-btn" type="button" data-close-ai aria-label="关闭问答"><svg class="i"><use href="#i-close"></use></svg></button>
+      </header>
+      <div class="ai-scope"><span>检索范围</span><strong id="aiScope">今日信源库</strong><span class="mono" id="aiEngine">LOCAL RAG</span></div>
+      <div class="ai-messages" id="aiMessages">
+        <div class="ai-welcome">
+          <p class="ai-welcome__lead">把今天的信息，问成一条可核验的线索。</p>
+          <p>我会先检索站内信源，再给出带引文的回答。涉及政策原文、数据与人事信息时，请点击引文回溯。</p>
+          <div class="ai-starters" id="aiStarters"></div>
+        </div>
+      </div>
+      <form class="ai-composer" id="aiForm">
+        <textarea id="aiInput" rows="2" maxlength="300" placeholder="例如：今天国务院有哪些政策信号？"></textarea>
+        <div class="ai-composer__foot"><span>Enter 发送 · Shift + Enter 换行</span><button type="submit" class="send-button">发送 <svg class="i"><use href="#i-send"></use></svg></button></div>
+      </form>
+      <p class="ai-disclaimer">回答由站内检索增强生成，引文可点击核验；不构成政策解读或投资建议。</p>
+    </section>
+  </div>
+
+  <div class="modal-layer" id="briefLayer" hidden>
+    <div class="modal-backdrop" data-close-brief></div>
+    <article class="brief-modal" role="dialog" aria-modal="true" aria-labelledby="briefModalTitle" tabindex="-1">
+      <header class="brief-modal__head">
+        <div>
+          <p class="eyebrow">DAILY BRIEF / <span id="briefModalIssue">2026.11.02</span></p>
+          <h2 id="briefModalTitle">今日政情分析简报</h2>
+        </div>
+        <div class="brief-modal__tools">
+          <button class="ghost-button ghost-button--small" type="button" id="copyBrief"><svg class="i"><use href="#i-copy"></use></svg>复制摘要</button>
+          <button class="ghost-button ghost-button--small" type="button" id="downloadBrief"><svg class="i"><use href="#i-download"></use></svg>Markdown</button>
+          <button class="icon-btn" type="button" data-close-brief aria-label="关闭简报"><svg class="i"><use href="#i-close"></use></svg></button>
+        </div>
+      </header>
+      <div class="brief-modal__body" id="briefModalBody"></div>
+    </article>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

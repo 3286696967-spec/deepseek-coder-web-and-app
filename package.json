@@ -1,0 +1,10 @@
+{
+  "name": "shiguan-politics-desk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "时观 · 全国时政实时雷达：聚合、检索、每日简报与站内问答",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}
